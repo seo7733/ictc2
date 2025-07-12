@@ -301,16 +301,6 @@
             transform: translateY(-2px);
         }
         
-        .debug-info {
-            background-color: #f0f9ff;
-            border: 1px solid #0ea5e9;
-            border-radius: 6px;
-            padding: 15px;
-            margin: 20px 0;
-            font-size: 14px;
-            color: #0369a1;
-        }
-        
         @media (max-width: 768px) {
             .content {
                 padding: 20px;
@@ -356,10 +346,6 @@
             .container {
                 box-shadow: none;
             }
-            
-            .debug-info {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -392,10 +378,7 @@
                 </div>
             </div>
             
-            <div class="debug-info" id="debug-info">
-                <strong>점수 배점:</strong> 10점(상:10, 중:7, 하:4) | 5점(상:5, 중:3, 하:1) | 3점(상:3, 중:2, 하:1)<br>
-                모든 항목을 '상'으로 체크하면 200점이 나와야 합니다.
-            </div>
+
         </div>
         
         <div style="text-align: center; padding: 1px 20px; color: #64748b; font-size: 14px;">
@@ -522,12 +505,8 @@
             document.getElementById('percentage').textContent = `${percentage}%`;
             document.getElementById('result').textContent = result;
             
-            // 디버그 정보 업데이트
-            document.getElementById('debug-info').innerHTML = `
-                <strong>점수 배점:</strong> 10점(상:10, 중:7, 하:4) | 5점(상:5, 중:3, 하:1) | 3점(상:3, 중:2, 하:1)<br>
-                <strong>현재 상태:</strong> 선택된 항목 ${selectedCount}/35개 | 총점: ${total}/200점<br>
-                ${detailText}
-            `;
+            
+            // 디버그 정보 삭제됨
         }
 
         function resetAll() {
@@ -536,11 +515,9 @@
                 btn.classList.remove('selected', 'high', 'medium', 'low');
             });
             
-            // 점수 초기화
             document.getElementById('total-score').innerHTML = '0<span style="font-size: 18px; opacity: 0.8;"> / 200점</span>';
             document.getElementById('percentage').textContent = '0%';
             document.getElementById('result').textContent = '-';
-            document.getElementById('debug-info').innerHTML = '<strong>점수 배점:</strong> 10점(상:10, 중:7, 하:4) | 5점(상:5, 중:3, 하:1) | 3점(상:3, 중:2, 하:1)<br>모든 항목을 \'상\'으로 체크하면 200점이 나와야 합니다.';
         }
 
         function printEvaluation() {
